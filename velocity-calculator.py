@@ -1,7 +1,5 @@
 from datetime import date, timedelta, date
-
-def calculate_weeks(points = 240 - 26, velocity = 5, team_capacity = 2):
-	return points / (velocity * team_capacity)
+from velocity import calculate_weeks
 
 def end_date(weeks, holiday_weeks = 2):
 	return date.today() + timedelta(weeks = weeks + holiday_weeks)
@@ -26,7 +24,7 @@ print "Target Velocity (%d), end date: %s" % (high_velocity, format_date(end_dat
 def to_days(weeks):
 	return weeks * 7
 
-def points_delivered_until(date, velocity = 5, holiday_weeks = 2):
-	return (((date - date.today()).days - (to_days(holiday_weeks))) / 7) * velocity
+def points_delivered_until(date, velocity = 5, holiday_weeks = 2, capacity = 2):
+	return (((date - date.today()).days - (to_days(holiday_weeks))) / 7) * (velocity * capacity)
 
-print "March points for YWV %d" %(points_delivered_until(date(day = 1, month = 3, year = 2010), velocity = 3))
+print "March points for YWV %d" %(points_delivered_until(date(day = 1, month = 3, year = 2010), velocity = 3, capacity = 2))
