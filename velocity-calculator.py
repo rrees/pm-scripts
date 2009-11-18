@@ -28,4 +28,8 @@ def to_days(weeks):
 def points_delivered_until(date, velocity = 5, holiday_weeks = 2, capacity = 2):
 	return (((date - date.today()).days - (to_days(holiday_weeks))) / 7) * (velocity * capacity)
 
-print "March points for YWV %d" %(points_delivered_until(date(day = 1, month = 3, year = 2010), velocity = 3, capacity = 2))
+significant_dates = ( ('New Year', date(day= 4, month = 1, year = 2010)), ('March', date(day = 1, month = 3, year = 2010)))
+
+for label, finish in significant_dates:
+	print "%s points for YWV %d" % (label, points_delivered_until(finish, velocity = yw_velocity, capacity = 2))
+
