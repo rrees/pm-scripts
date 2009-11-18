@@ -9,9 +9,7 @@ def test_week_calcuation():
 
 def test_end_date_calculation():
 	an_end_date = end_date(start_date = eighteenth_november, weeks = 1, holiday_weeks = 0)
-	assert 25 == an_end_date.day
-	assert 11 == an_end_date.month
-	assert 2009 == an_end_date.year
+	assert twenty_fifth_november == an_end_date
 	
 def test_velocity_calculator_maker():
 	velocity_calculator = velocity_calculator_maker(target_points = 20, capacity = 2)
