@@ -1,13 +1,10 @@
 from datetime import date, timedelta, date
-from velocity import calculate_weeks
-
-def end_date(weeks, holiday_weeks = 2):
-	return date.today() + timedelta(weeks = weeks + holiday_weeks)
+from velocity import calculate_weeks, end_date
 
 def format_date(date):
 	return date.strftime("%d/%m/%Y")
 
-yw_velocity = 6
+yw_velocity = 5
 model_velocity = 5
 high_velocity = 10
 low_velocity = 7
