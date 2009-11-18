@@ -19,4 +19,4 @@ def test_velocity_calculator_maker():
 	assert calculate_weeks(points = 20, velocity = 5, team_capacity = 2) == velocity_calculator(velocity = 5)
 
 def test_points_delivered_until():
-	assert 20 == points_delivered_until(twenty_fifth_november, capacity = 2, velocity = 10, holiday_weeks = 0)
+	assert 20 == points_delivered_until(twenty_fifth_november, start_date = eighteenth_november, capacity = 2, velocity = 10, holiday_weeks = 0)
