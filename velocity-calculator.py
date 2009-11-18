@@ -1,5 +1,5 @@
 from datetime import date, timedelta, date
-from velocity import calculate_weeks, end_date
+from velocity import calculate_weeks, end_date, velocity_calculator_maker
 
 def format_date(date):
 	return date.strftime("%d/%m/%Y")
@@ -9,14 +9,15 @@ model_velocity = 5
 high_velocity = 10
 low_velocity = 7
 
+velocity_calculator = velocity_calculator_maker(target_points = 221, capacity = 2)
 
-print "Yesterday's Weather Velocity (%d), end date: %s" % (yw_velocity, format_date(end_date(calculate_weeks(velocity = yw_velocity))))
+print "Yesterday's Weather Velocity (%d), end date: %s" % (yw_velocity, format_date(end_date(velocity_calculator(velocity = yw_velocity))))
 
-print "Model Velocity (%d), end date: %s" % (model_velocity,  format_date(end_date(calculate_weeks())))
+print "Model Velocity (%d), end date: %s" % (model_velocity,  format_date(end_date(velocity_calculator())))
 
-print "Low Velocity (%d), end date: %s" % (low_velocity, format_date(end_date(calculate_weeks(velocity = low_velocity))))
+print "Low Velocity (%d), end date: %s" % (low_velocity, format_date(end_date(velocity_calculator(velocity = low_velocity))))
 
-print "Target Velocity (%d), end date: %s" % (high_velocity, format_date(end_date(calculate_weeks(velocity= high_velocity))))
+print "Target Velocity (%d), end date: %s" % (high_velocity, format_date(end_date(velocity_calculator(velocity= high_velocity))))
 
 def to_days(weeks):
 	return weeks * 7
