@@ -1,5 +1,5 @@
 from datetime import date, timedelta, date
-from velocity import calculate_weeks, end_date, velocity_calculator_maker
+from velocity import calculate_weeks, end_date, velocity_calculator_maker, points_delivered_until
 
 def format_date(date):
 	return date.strftime("%d/%m/%Y")
@@ -21,12 +21,6 @@ predictions = (("Yesterday's Weather", yw_velocity, velocity_calculator(velocity
 	
 for description, velocity, weeks in predictions:
 	print "%s Velocity (%d), end date: %s" % (description, velocity, format_date(end_date(weeks)))
-
-def to_days(weeks):
-	return weeks * 7
-
-def points_delivered_until(date, velocity = 5, holiday_weeks = 2, capacity = 2):
-	return (((date - date.today()).days - (to_days(holiday_weeks))) / 7) * (velocity * capacity)
 
 significant_dates = ( ('New Year', date(day= 4, month = 1, year = 2010)), ('March', date(day = 1, month = 3, year = 2010)))
 
