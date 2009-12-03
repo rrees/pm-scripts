@@ -1,4 +1,4 @@
-from velocity import velocity_calculator_maker, calculate_weeks, end_date, points_delivered_until
+from velocity import velocity_calculator_maker, calculate_weeks, end_date, points_delivered_until, velocity_required_for
 from datetime import date
 
 eighteenth_november = date(day = 18, month = 11, year = 2009)
@@ -18,3 +18,10 @@ def test_velocity_calculator_maker():
 
 def test_points_delivered_until():
 	assert 20 == points_delivered_until(twenty_fifth_november, start_date = eighteenth_november, capacity = 2, velocity = 10, holiday_weeks = 0)
+
+fourth_january	= date(day = 4, month = 1, year = 2010)
+eighteenth_january = date( day = 18, month = 1, year = 2010)
+
+def test_velocity_required_to_deliver():
+	velocity = velocity_required_for(start_date = fourth_january, end_date = eighteenth_january, capacity = 1, target_points = 20)
+	assert velocity == 10, "Expected 10, got %d" % (velocity, )
