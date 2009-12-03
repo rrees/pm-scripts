@@ -15,7 +15,13 @@ def points_delivered_until(date, start_date = date.today(), velocity = 5, holida
 
 	return (((date - start_date).days - (to_days(holiday_weeks))) / 7) * (velocity * capacity)
 
-def velocity_required_for(start_date, end_date, target_points, capacity = 1):
-	weeks = (end_date - start_date).days / 7
+def velocity_required_for(start_date, end_date, target_points, capacity = 1, holiday_weeks = 2):
+	weeks =  weeks_between(start_date, end_date) - holiday_weeks
 	velocity = (target_points / capacity) / weeks
 	return velocity
+
+def weeks_between(start_date, end_date):
+	weeks = 0
+	days_between = (end_date - start_date).days
+	if(days_between%7 > 0): weeks = weeks + 1
+	return  weeks + (days_between/ 7)

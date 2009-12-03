@@ -11,8 +11,9 @@ low_velocity = 7
 
 total_scope = 205
 dev_complete = 48
+remaining_scope = total_scope - dev_complete
 
-velocity_calculator = velocity_calculator_maker(target_points = total_scope - dev_complete, capacity = 2)
+velocity_calculator = velocity_calculator_maker(target_points = remaining_scope, capacity = 2)
 
 predictions = (("Yesterday's Weather", yw_velocity, velocity_calculator(velocity = yw_velocity)),
 	('Model', model_velocity, velocity_calculator(velocity = model_velocity)),
@@ -26,4 +27,9 @@ significant_dates = ( ('New Year', date(day= 4, month = 1, year = 2010)), ('Marc
 
 for label, finish in significant_dates:
 	print "%s points for YWV %d" % (label, points_delivered_until(finish, velocity = yw_velocity, capacity = 2))
+
+target_dates = (('24th February', date(day = 24, month = 2, year = 2010)), ('24th March', date(day = 24, month = 3, year = 2010)))
+
+for label, target_date in target_dates:
+	print "To meet a date of %s a velocity of %d is required" % (label, velocity_required_for(end_date = target_date, start_date = date.today(), target_points = remaining_scope, capacity = 2))
 
