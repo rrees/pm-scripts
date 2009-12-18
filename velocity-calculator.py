@@ -4,13 +4,13 @@ from velocity import calculate_weeks, end_date, velocity_calculator_maker, point
 def format_date(date):
 	return date.strftime("%d/%m/%Y")
 
-yw_velocity = 7
+yw_velocity = 6
 model_velocity = 5
 high_velocity = 10
 low_velocity = 7
 
-total_scope = 205
-dev_complete = 48
+total_scope = 180
+dev_complete = 56
 remaining_scope = total_scope - dev_complete
 
 velocity_calculator = velocity_calculator_maker(target_points = remaining_scope, capacity = 2)
