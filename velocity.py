@@ -1,5 +1,9 @@
 from datetime import date, timedelta
 
+class Velocity:
+	def __init__(self, model_velocity):
+		self.model = model_velocity
+
 def calculate_weeks(points = 221 - 26, velocity = 5, team_capacity = 2):
 	return points / (velocity * team_capacity)
 
